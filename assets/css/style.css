@@ -1,0 +1,38 @@
+body {
+    background: -webkit-linear-gradient(left, rgb(56,139,172), rgb(85, 0, 155), rgb(26, 0, 48), rgb(85, 0, 155), rgb(56,139,172)) fixed;
+      
+}
+
+.bg-opacity {
+    background: -webkit-linear-gradient(left, rgb(255, 153, 0), rgb(85, 0, 155), rgb(255, 153, 0), rgb(85, 0, 155), rgb(255, 153, 0)) fixed;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-radius: .3rem;
+    display: block;
+   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";       /* IE 8 */
+   filter: alpha(opacity=70);  /* IE 5-7 */
+   -moz-opacity: 0.70;          /* Netscape */
+   -khtml-opacity: 0.70;        /* Safari 1.x */
+   opacity: 0.70;               /* Good browsers */
+}
+
+.container-style {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(45, 60, 66); 
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px #000000;
+} 
+
+h2, h3, h4, h5 {
+    text-align: center;
+    color: white;
+    text-shadow: 1px 0px #000000);
+}
+
