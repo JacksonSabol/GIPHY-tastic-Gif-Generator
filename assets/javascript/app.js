@@ -1,7 +1,7 @@
 // GIPHY API key: hKygJ8O2rMKyZ8WKPW0bLfaRtHkXG5Vk
 
 // Array to hold the default/displayed styles of dance
-var defaultStyles = ["swing dancing", "tango", "alcha gulu", "locking", "line dancing", "krumping", "pogo dancing", "baroque dancing", "ballet dancing", "belly dancing", "samba", "tap dancing", "square dancing", "irish step dancing", "melbourne shuffle"];
+var defaultStyles = ["swing dancing", "tango", "popping dance", "locking dance", "line dancing", "krumping", "pogo dancing", "baroque dancing", "ballet dancing", "belly dancing", "samba", "tap dancing", "square dancing", "riverdance", "melbourne shuffle"];
 
 $(document).ready(function () {
     renderButtons();
@@ -25,3 +25,46 @@ function renderButtons() {
         $("#default-gif-buttons").append(defaultButton);
     };
 };
+
+// Function for all buttons to query the GIPHY API with an AJAX call on 'click'
+$(document).on("click", ".dance-style", function () {
+    // $(".dance-style").on("click", function () {
+    // Set a variable to hold the value of the data-name attribute, which we set to be the style of dance in the renderButtons function
+    var danceStyle = $(this).attr("data-name");
+    // Console log for testing
+    console.log(danceStyle);
+    // Set a variable to hold the GIPHY API query URL that allows the tag to be the data-name value of the button clicked
+    // The URL also has a rating of G or PG, a limit of 10 gifs, and the sort by relevant parameters hard coded into it
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + danceStyle + "&rating=g&rating=pg&limit=10&sort=relevant&api_key=dc6zaTOxFJmzC";
+
+    // AJAX call with the queryURL defined above, and the method of GET - use .then to wait for response before executing the function
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            // Assign variable to be placeholder for the data (gifs) returned
+            var results = response.data;
+            // Console log for testing
+            console.log(results);
+            // Loop through the results to pull values and append them to div, p, and img tags
+            for (var j = 0; j < results.length; j++) {
+                // Assign a variable to create a new div tag
+                var gifDiv = $("<div>");
+                // Assign a variable to hold the rating of each gif
+                var rating = results[j].rating;
+                // Assign a variable to create a p tag with text equal to the rating
+                var p = $("<p>").text("Rating: " + rating);
+                // Assign a variable to create an img tag
+                var danceGif = $("<img>");
+                // Add src attribute to the img tag equal to the gif's fixed_height URL
+                danceGif.attr("src", results[j].images.fixed_height.url);
+                // Prepend the p tag with the rating to the gif div we created
+                gifDiv.prepend(p);
+                // Prepend the img tag with the gif to the gif div we created
+                gifDiv.prepend(danceGif);
+                // Prepend the gif div to the HTML inside of the div with an id of gif-well
+                $("#gif-well").prepend(gifDiv);
+            }
+        });
+});
