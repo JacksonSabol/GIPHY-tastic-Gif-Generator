@@ -54,11 +54,11 @@ $(document).on("click", ".dance-style", function () {
                 // Assign a variable to create an img tag
                 var danceGif = $("<img>");
                 // Add src attribute to the img tag equal to the gif's 'still' URL so all the gifs load 'paused'
-                danceGif.attr("src", results[j].images.original_still.url);
-                // Add data- attribute to the img tag equal to the gif's 'still' URL so we can toggle back and forth to it and the animated state
-                danceGif.attr("data-still", results[j].images.original_still.url);
-                // Add data- attribute to the img tag equal to the gif's 'original' or animated URL so we can toggle back and forth to it and the still state
-                danceGif.attr("data-animate", results[j].images.original.url);
+                danceGif.attr("src", results[j].images.fixed_width_still.url);
+                // Add data- attribute to the img tag equal to the gif's fixed-width 'still' URL so we can toggle back and forth to it and the animated state
+                danceGif.attr("data-still", results[j].images.fixed_width_still.url);
+                // Add data- attribute to the img tag equal to the gif's fixed-width animated URL so we can toggle back and forth to it and the still state
+                danceGif.attr("data-animate", results[j].images.fixed_width.url);
                 // Add data- attribute to track what state (still or animate) each gif is in
                 danceGif.attr("data-state", "still");
                 // Add class so we can use onclick event listener to toggle between gif states
