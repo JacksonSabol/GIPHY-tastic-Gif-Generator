@@ -68,3 +68,17 @@ $(document).on("click", ".dance-style", function () {
             }
         });
 });
+
+// Function to add new dance style/topic to the list of buttons
+$("#add-dance").on("click", function (event) {
+    // Prevent page from reloading (default condition) when submit style button is pressed
+    event.preventDefault();
+    // Assign variable to equal a string of the text inside of the input text box at the time of submittal
+    var newTopic = $("#dance-input").val().trim();
+    // Push the new topic to the end of the defaultStyles array
+    defaultStyles.push(newTopic);
+    // Empty the content of the text box after 'Add a Dance Style' button is clicked
+    $("#dance-input").val("");
+    // Call the renderButtons function to re render all the buttons with the new topic inside of the array
+    renderButtons();
+});
