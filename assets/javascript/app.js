@@ -28,13 +28,11 @@ function renderButtons() {
 
 // Function for all buttons to query the GIPHY API with an AJAX call on 'click'
 $(document).on("click", ".dance-style", function () {
-    // $(".dance-style").on("click", function () {
+
     // Set a variable to hold the value of the data-name attribute, which we set to be the style of dance in the renderButtons function
     var danceStyle = $(this).attr("data-name");
-    // Console log for testing
-    console.log(danceStyle);
     // Set a variable to hold the GIPHY API query URL that allows the tag to be the data-name value of the button clicked
-    // The URL also has a rating of G or PG, a limit of 10 gifs, and the sort by relevant parameters hard coded into it
+    // The URL also has a rating of G or PG, a limit of 10 gifs, and the 'sort by: relevant' parameters hard coded into it
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + danceStyle + "&rating=g&rating=pg&limit=10&sort=relevant&api_key=hKygJ8O2rMKyZ8WKPW0bLfaRtHkXG5Vk";
 
     // AJAX call with the queryURL defined above, and the method of GET - use .then to wait for response before executing the function
@@ -45,8 +43,6 @@ $(document).on("click", ".dance-style", function () {
         .then(function (response) {
             // Assign variable to be placeholder for the data (gifs) returned
             var results = response.data;
-            // Console log for testing
-            console.log(results);
             // Loop through the results to pull values and append them to div, p, and img tags
             for (var j = 0; j < results.length; j++) {
                 // Assign a variable to create a new div tag
@@ -57,8 +53,16 @@ $(document).on("click", ".dance-style", function () {
                 var p = $("<p>").text("Rating: " + rating);
                 // Assign a variable to create an img tag
                 var danceGif = $("<img>");
-                // Add src attribute to the img tag equal to the gif's fixed_height URL
-                danceGif.attr("src", results[j].images.fixed_height.url);
+                // Add src attribute to the img tag equal to the gif's 'still' URL so all the gifs load 'paused'
+                danceGif.attr("src", results[j].images.original_still.url);
+                // Add data- attribute to the img tag equal to the gif's 'still' URL so we can toggle back and forth to it and the animated state
+                danceGif.attr("data-still", results[j].images.original_still.url);
+                // Add data- attribute to the img tag equal to the gif's 'original' or animated URL so we can toggle back and forth to it and the still state
+                danceGif.attr("data-animate", results[j].images.original.url);
+                // Add data- attribute to track what state (still or animate) each gif is in
+                danceGif.attr("data-state", "still");
+                // Add class so we can use onclick event listener to toggle between gif states
+                danceGif.addClass("gif");
                 // Prepend the p tag with the rating to the gif div we created
                 gifDiv.prepend(p);
                 // Prepend the img tag with the gif to the gif div we created
@@ -67,6 +71,28 @@ $(document).on("click", ".dance-style", function () {
                 $("#gif-well").prepend(gifDiv);
             }
         });
+});
+
+// Function to switch between still and animate states for gifs
+$(document).on("click", ".gif", function () {
+
+    // Assign a variable to store the gif's data-state
+    var state = $(this).attr("data-state");
+
+    // Check if the data-state is equal to 'still'
+    if (state === "still") {
+        // Update the src attribute of this image to it's data-animate value
+        $(this).attr("src", $(this).attr("data-animate"));
+        // Update the data-state attribute to 'animate' for tracking
+        $(this).attr("data-state", "animate");
+    }
+    // Check if the data-state is equal to 'animate'
+    if (state === "animate") {
+        // Update the src attribute to the URL in 'data-still'
+        $(this).attr("src", $(this).attr("data-still"));
+        // Update data-state attribute to 'still' for tracking
+        $(this).attr("data-state", "still");
+    }
 });
 
 // Function to add new dance style/topic to the list of buttons
