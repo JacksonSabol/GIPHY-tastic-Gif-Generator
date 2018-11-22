@@ -45,7 +45,7 @@ $(document).on("click", ".dance-style", function () {
  ```
 ### Feel free to generate .gifs to your heart's content by clicking on the preexisting buttons, or by making your own!
 
-[Link to my Game](https://jacksonsabol.github.io/GIPHY-tastic-Gif-Generator/)
+[Link to my .gif Generator](https://jacksonsabol.github.io/GIPHY-tastic-Gif-Generator/)
 
 Thank you for reading!
 
