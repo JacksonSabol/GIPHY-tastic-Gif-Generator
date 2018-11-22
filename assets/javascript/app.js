@@ -1,4 +1,4 @@
-// GIPHY API key: hKygJ8O2rMKyZ8WKPW0bLfaRtHkXG5Vk
+// My GIPHY API key: hKygJ8O2rMKyZ8WKPW0bLfaRtHkXG5Vk
 
 // Array to hold the default/displayed styles of dance
 var defaultStyles = ["swing dancing", "tango", "popping dance", "locking dance", "line dancing", "krumping", "pogo dancing", "baroque dancing", "ballet dancing", "belly dancing", "samba", "tap dancing", "square dancing", "riverdance", "melbourne shuffle"];
@@ -35,7 +35,7 @@ $(document).on("click", ".dance-style", function () {
     console.log(danceStyle);
     // Set a variable to hold the GIPHY API query URL that allows the tag to be the data-name value of the button clicked
     // The URL also has a rating of G or PG, a limit of 10 gifs, and the sort by relevant parameters hard coded into it
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + danceStyle + "&rating=g&rating=pg&limit=10&sort=relevant&api_key=dc6zaTOxFJmzC";
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + danceStyle + "&rating=g&rating=pg&limit=10&sort=relevant&api_key=hKygJ8O2rMKyZ8WKPW0bLfaRtHkXG5Vk";
 
     // AJAX call with the queryURL defined above, and the method of GET - use .then to wait for response before executing the function
     $.ajax({
