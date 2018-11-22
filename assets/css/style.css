@@ -39,19 +39,28 @@ h2, h3, h4, h5 {
 .submit-button {
     width: 150px;
     font-weight: bold;
+    color: white;
     border-style: solid;
     border-radius: .3rem;
     border-width: 1px;
     border-color: rgb(16, 0, 75);
+    background-color: rgb(31, 2, 136);
     /* background: -moz-linear-gradient(90deg, rgb(16, 0, 75), rgb(54, 54, 54), rgb(16, 0, 75)));
     background: -webkit-linear-gradient(left, rgb(16, 0, 75)), rgb(54, 54, 54), rgb(16, 0, 75))); */
 }
 
-.choice-button:hover {
+.dance-style {
+    width: 200px;
     font-weight: bold;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";       /* IE 8 */
-    filter: alpha(opacity=80);  /* IE 5-7 */
-    -moz-opacity: 0.80;          /* Netscape */
-    -khtml-opacity: 0.80;        /* Safari 1.x */
-    opacity: 0.80;               /* Good browsers */
+    color: white;
+    border-style: solid;
+    border-radius: .3rem;
+    border-width: 1px;
+    border-color: rgb(16, 0, 75);
+    background-color: rgb(31, 2, 136);
+    margin: 5px;
+}
+
+.dance-style:hover {
+    background-color: rgb(16, 0, 75);
 }
