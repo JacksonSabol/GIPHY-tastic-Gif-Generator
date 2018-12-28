@@ -1,6 +1,6 @@
 # Welcome to GIPHY-tastic .gif Generator!
 
-## The following project is Assignment 6 of the UCB Full Stack Coding Bootcamp
+## The following project is a Dancing-themed .gif generator using the GIPHY API
 
 ### Overview
 
@@ -44,6 +44,8 @@ $(document).on("click", ".dance-style", function () {
 });
  ```
 ### Feel free to generate .gifs to your heart's content by clicking on the preexisting buttons, or by making your own!
+
+Note: You can animate or make-still the .gifs you generate simply by clicking on them.
 
 [Link to my .gif Generator](https://jacksonsabol.github.io/GIPHY-tastic-Gif-Generator/)
 
